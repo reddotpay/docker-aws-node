@@ -6,4 +6,5 @@ RUN yum update -y \
     make \
     jq \
     awscli \
-    nodejs-8.10.0
+    nodejs-8.10.0 \ 
+    gzip
