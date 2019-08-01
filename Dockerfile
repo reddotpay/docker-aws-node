@@ -7,4 +7,4 @@ RUN yum update -y \
     jq \
     awscli \
     nodejs-8.10.0 \ 
-    gzip
+    zip
