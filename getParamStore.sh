@@ -11,7 +11,7 @@ if [ $# -eq 0 ]; then
 	exit 1
 fi
 ARGUMENTS="$@"
-OUT_FILE="$(pwd)/var/env.sh"
+OUT_FILE="/var/env.sh"
 echo '#!/bin/sh' > $OUT_FILE
 
 # non greedy capture group 1, | greedy capture till end of string
