@@ -14,4 +14,4 @@ export AWS_SECRET_ACCESS_KEY=`cat assume-role-output.txt | jq -r '.Credentials.S
 export AWS_SESSION_TOKEN=`cat assume-role-output.txt | jq -r '.Credentials.SessionToken'`
 export AWS_DEFAULT_REGION=$2
 
-echo "End of Switch Role
+echo "End of Switch Role"
