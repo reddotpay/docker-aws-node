@@ -9,4 +9,4 @@ RUN yum update -y \
     nodejs \ 
     zip
 
-COPY ["switchRole.sh", "retrieveEnvironmentVariables.sh", "./var/"]
+COPY ["switchRole.sh", "getParamStore.sh", "./var/"]
