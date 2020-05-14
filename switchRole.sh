@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ $# -ne 2 ]; then
+	echo "Error! Too many arguments provided\nsource /var/switchRole.sh <AWS_ROLE> <AWS_REGION>"
+	exit 1
+fi
+
 echo "Start of Switch Role"
 
 unset AWS_ACCESS_KEY_ID
