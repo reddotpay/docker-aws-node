@@ -29,7 +29,7 @@ function exportToFile() {
 	for param in `jq -n "$1" | jq -r '.[].Value'`
 	do
 		# echo $param
-		param=$(sed "s^'^'\\\''^" <<< $param) #escape all single quotes
+		param=$(sed "s^'^'\\\''^g" <<< $param) #escape all single quotes
 		# echo $param
 		param=`eval $SED_COMMAND <<< $param`
 		# echo "$param"
