@@ -13,6 +13,7 @@ fi
 ARGUMENTS="$@"
 OUT_FILE="/var/env.sh"
 echo '#!/bin/sh' > $OUT_FILE
+echo "echo 'Available Variables:'" >> $OUT_FILE
 
 # non greedy capture group 1, | greedy capture till end of string
 
@@ -28,13 +29,15 @@ function exportToFile() {
 	IFS=$'\n'
 	for param in `jq -n "$1" | jq -r '.[].Value'`
 	do
-		# echo $param
-		param=$(sed "s^'^'\\\''^g" <<< $param) #escape all single quotes
-		# echo $param
+		#escape all single quotes
+		param=$(sed "s^'^'\\\''^g" <<< $param) 
+		#convert to export key='value'
 		param=`eval $SED_COMMAND <<< $param`
-		# echo "$param"
 		echo $param >> $OUT_FILE
-		# echo "echo $val" >> $OUT_FILE
+		#echo available keys
+		key=$(sed "s^=.*^^" <<< $param)
+                key=$(sed "s^export ^$^" <<< $key)
+                echo "echo '$key'" >> $OUT_FILE
 	done
 	#restore delimiter
 	IFS=$old_IFS
